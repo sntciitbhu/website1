@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Science and Technology Council, IIT (BHU) Varanasi - A place where all the innovative ideas trapped in the quagmire of pen and paper, are given shape and transformed into reality.">
+        <meta name="keywords" content=" science, technologycompetition, iit bhu, sntc, iit gymkhana, innovation, technex, festival, iit, council, varanasi">
+
+        <title>Blog - IIT (BHU) Varanasi</title>
+        <link rel="icon" type="image/ico" href="/static/img/favicon.ico">
+
+        <!-- Bootstrap Core CSS -->
+        <link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css">
+
+        <!-- Custom Fonts -->
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- Plugin CSS -->
+        <link rel="stylesheet" href="/static/css/animate.min.css" type="text/css">
+        <link rel="stylesheet" href="/static/css/news-ticker.css" type="text/css">
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/static/learning/custom.css" type="text/css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+    </head>
+
+    <body id="page-top">
+
+        <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand page-scroll">Blog
+                        <br><span class="iit-heading normal-font">IIT (BHU) Varanasi</span>
+                    </a>
+                </div>
+                
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        
+                        <li><a class="navbar-brand" href="/">
+                            <img src="/static/tac/img/home.png" style="width:20px;">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+
+            </div>
+        </nav>
+        <!--
+
+<header>
+<div class="header-content">
+<a href="#about" class="btn btn-primary btn-xl page-scroll" style="opacity: 0.35;" >Find Out More</a>
+</div>
+</header>
+-->
+
+        <section class='header' >
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h2 class="section-heading ribbon"><span>What's new</span></h2>
+                    </div>
+                    <div class="col-md-12" id = "data">
+
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+        <script>
+            var csvUrl = 'https://docs.google.com/a/itbhu.ac.in/spreadsheets/d/1IzMR_ubt82Fl-aEdXxBu-7gypBKGyLpKu_s8gaBp-u0/export?format=csv&id=1IzMR_ubt82Fl-aEdXxBu-7gypBKGyLpKu_s8gaBp-u0&gid=0';
+
+
+            function handleCSVResult(csvString) {
+                // Get the div element to append the data to
+                var dataArea = document.querySelector('#data');
+
+                // Split csv to rows
+                var rows = csvString.split('\n');
+
+                var htmlStr = '';
+
+                // Iterate over each row
+                for (var i = 1; i < rows.length; i++) {
+                    var row = rows[i];
+
+                    // split row to cells
+                    row = row.replace('#","','#,');
+                    row = row.replace('",',',');
+                    row = row.replace(',"',',');
+                    row = row.replace('""','"');
+                    row = row.replace('#"',' ');
+
+
+
+
+                    var cells = row.split('#,');
+
+                    // Extract data from cell 1 and 2 of current row
+                    var Heading = cells[0];
+                    var Line1 = cells[1];
+                    var Content_short = cells[2];
+                    var details = cells[3];
+
+
+                    // Add extracted CSV data to string
+                    htmlStr = '<hr><h2>' + Heading + '</h2><p class="normal-font"><b>' + Line1 + '</b><br>' + Content_short + '<br><b>' + details+ '</b></p>'+htmlStr;
+                                     
+
+                }
+
+                // Set the string generated from CSV as HTML of the dedicated div
+                dataArea.innerHTML = htmlStr;
+            }
+
+            // Init Ajax Object
+            var ajax = new XMLHttpRequest();
+
+            // Set a GET request to the URL which points to your CSV file
+            ajax.open('GET', csvUrl);
+
+            // Set the action that will take place once the browser receives your CSV
+            ajax.onreadystatechange = function() {
+                if (ajax.readyState === XMLHttpRequest.DONE && ajax.status === 200) {
+                    // Request was successful
+                    var csvData = ajax.responseText;
+
+                    // Do something with that data here
+                    handleCSVResult(csvData);
+                }
+            }
+
+            // Send request
+            ajax.send();   
+        </script>
+
+
+        <footer>
+            <div class="container ">
+                <div class="row">
+
+                    <div class="col-sm-4 iit-gate-position">
+                        <img class="iit-gate" src="/static/img/footer-img.png" alt="iitbhu-gate">
+                    </div>
+                    <div class="col-sm-4 iit-gate-position">
+                        <p class="footer-company-name justify-content-center"> &copy;Managed by SNTC Tech Team </p>
+
+                        <p class="footer-company-name justify-content-center"><span style="padding-right: 2.8%;">Navtosh Das</span><span style="padding-right: 5px ;">| </span><span> Dilbwag Singh</span></p>
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- jQuery -->
+        <script src="/static/js/jquery.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="/static/js/bootstrap.min.js"></script>
+        <!-- Plugin JavaScript -->
+        <script src="/static/js/jquery.easing.min.js"></script>
+        <script src="/static/js/jquery.fittext.js"></script>
+        <script src="/static/js/wow.min.js"></script>
+        <script src="/static/js/morphext.min.js"></script>
+        <script src="/static/js/jquery.bgswitcher.js"></script>
+        <!-- Custom Theme JavaScript -->
+        <script src="/static/tac/custom.js"></script>
+
+    </body>
+
+</html>
