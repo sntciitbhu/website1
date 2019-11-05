@@ -1,5 +1,8 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
+from django.contrib.auth import views as auth_views
+from django.conf import settings
+#from django.contrib.auth.views import logout
 
 urlpatterns = [
     path('', views.home , name="home"),
@@ -19,4 +22,17 @@ urlpatterns = [
     path('blog', views.blog , name="blog"),
     path('udaan', views.udaan , name="udaan"),
     path('app', views.app , name="app"),
+    ##authentication urls
+    #path('accounts/', include('django.contrib.auth.urls')),
+    path('signin/', views.signin, name="signin"),
+    path('postsign/', views.postsign, name="postsign"),
+    path('reset_password/', views.resetpassword, name="resetpassword"),
+    path('postresetpassword/', views.postresetpassword, name='postresetpassword'),
+    path('signup/', views.signup, name="signup"),
+    path('postsignup/', views.postsignup, name="postsignup"),
+    ##
+    path('index/<email>/<user>/', views.index, name="index"),
+    path('logout/', auth_views.LogoutView.as_view() , {'next_page': settings.LOGOUT_REDIRECT_URL}, name='logout'),
+    #path('logout/', views.logout, name="logout"),
+    path('addactivity/', views.addactivity, name="addactivity"),
 ]

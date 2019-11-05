@@ -309,40 +309,5 @@
     <script src="/static/clubs/cops/custom.js"></script>
 
     </body>
-//Scroll to top button
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-rel="stylesheet">
-<style >
-#btnScrollToTop{
-  position: fixed;
-  right: 10px;
-  bottom: 10px;
-  width: 50px;
-  height: 50px;
-  border-radius: 20%;
-  background: #e62739;
-  box-shadow: 0 0 18px rgba(0,0,0,0.25);
-  color: #ffffff
-  border: none;
-  outline: none;
-  cursor: pointer;
-}
-  #btnScrollToTop:active{
-    background: #cc2333  ;
-  }
-</style>
-<button id="btnScrollToTop">
-<i class="material-icons">arrow_upward</i>
-</button>
-<script >
-  const btnScrollToTop= document.querySelector("#btnScrollToTop");
 
-  btnScrollToTop.addEventListener("click",function(){
-    window.scrollTo({
-      top:0,
-      left:0,
-      behavior : "smooth"
-    }); 
-  });
-</script>
 </html>

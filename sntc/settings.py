@@ -37,8 +37,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #django-allauth
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    #
     'core',
 ]
+
+AUTHENTICATION_BACKENDS = (
+ 'django.contrib.auth.backends.ModelBackend',
+ 'allauth.account.auth_backends.AuthenticationBackend',
+ )
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -123,3 +135,25 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+#SITE_ID = 2
+
+#LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = 'signin'
+
+#
+
+#SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '570404350925-v687c5g9vs14gi9n9ue3hfqe36bt185s.apps.googleusercontent.com'
+#SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '8C3XXZlfOn1_8au9HWEf8pGu'
+
+#SOCIALACCOUNT_PROVIDERS = {
+#    'google': {
+#        'SCOPE':[
+#            'profile',
+#            'email'
+#        ],
+#        'AUTH_PARAMS': {
+#            'access_type':'online',
+#        }
+#    }
+#}

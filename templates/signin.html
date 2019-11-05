@@ -1,0 +1,17 @@
+{% if msg %}
+    <script>alert('{{ msg }}')</script>
+{% endif %}
+
+<html>
+    <body>
+        <form action="/postsign/" method="POST">
+            {% csrf_token %}
+            Email: <input type="email" name="email">
+            Password: <input type="password" name="password">
+            <input type="submit" value="SignIn"><br>
+            <button type="button" onclick="location.href='{% url 'resetpassword' %}'">reset password</button>
+            <button type="button" onclick="location.href='{% url 'signup' %}'">Sign Up</button><br>
+            
+        </form>
+    </body>
+</html>

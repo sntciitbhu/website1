@@ -1,0 +1,13 @@
+{% if msg %}
+    <script>
+        alert('{{ msg }}')
+    </script>
+{% endif %}
+<html>
+    <body>
+        <h1>
+            sign up Successfull
+        </h1>
+        <a href="{% url 'signin' %}">Login</a>
+    </body>
+</html>
